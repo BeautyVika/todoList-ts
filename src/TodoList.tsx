@@ -9,6 +9,7 @@ type PropsType = {
     filterTasks: (filter: FilterType) => void
     addTask: (title: string)=> void
     changeTasksStatus: (newId: string, newIsDone: boolean) => void
+    filter: FilterType
 }
 type TaskType ={
     id: string
@@ -58,6 +59,9 @@ const TodoList =(props: PropsType)=>{
             </li>
         )
     })
+    const all = props.filter === 'all' ? 'active-filter' : ''
+    const active = props.filter === 'active' ? 'active-filter' : ''
+    const completed = props.filter === 'completed' ? 'active-filter' : ''
     return (
         <div>
             <h3>{props.title}</h3>
@@ -75,9 +79,9 @@ const TodoList =(props: PropsType)=>{
             </ul>
             <div>
 
-                <Button name={'All'} callback={() => onChangeFilter('all')}/>
-                <Button name={'Active'} callback={() => onChangeFilter('active')}/>
-                <Button name={'Completed'} callback={() => onChangeFilter('completed')}/>
+                <Button className={all} name={'All'} callback={() => onChangeFilter('all')}/>
+                <Button className={active} name={'Active'} callback={() => onChangeFilter('active')}/>
+                <Button className={completed} name={'Completed'} callback={() => onChangeFilter('completed')}/>
             </div>
         </div>
     )
