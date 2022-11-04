@@ -1,21 +1,10 @@
-.App {
-  padding: 30px;
-  display: flex;
+.isDone {
+  text-decoration: line-through;
+  font-weight: bold;
+  color: #ff4081;
+
+}
+.notIsDone {
+  color: white;
 }
 
-.App > div {
-  margin-right: 50px;
-}
-.error {
-  border: red 1px solid;
-}
-
-.error-message {
-  color: red;
-}
-.active-filter {
-  background-color: aquamarine;
-}
-.is-done {
-  opacity: 0.5;
-}
