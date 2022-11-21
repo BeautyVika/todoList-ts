@@ -8,7 +8,7 @@ import {DeleteOutlineTwoTone} from "@material-ui/icons";
 
 type TodoListPropsType = {
     title: string
-    todoListId: string
+    id: string
     tasks: Array<TaskType>
     filter: FilterValuesType
     removeTodoList: (todoListId: string) => void
@@ -29,12 +29,12 @@ const TodoList = (props: TodoListPropsType) => {
 
     const getTasksListItem = (t: TaskType )=> {
 
-        const removeTask = () => props.removeTask(t.id, props.todoListId)
+        const removeTask = () => props.removeTask(t.id, props.id)
 
         const changeTaskStatus = (e: ChangeEvent<HTMLInputElement>)=>props.changeTaskStatus(t.id,
-                                                                    e.currentTarget.checked, props.todoListId)
+                                                                    e.currentTarget.checked, props.id)
         const changeTaskTitle = (title: string) => {
-            props.changeTaskTitle(t.id, title, props.todoListId)
+            props.changeTaskTitle(t.id, title, props.id)
         }
         return (
             <ListItem
@@ -51,18 +51,18 @@ const TodoList = (props: TodoListPropsType) => {
         )
     }
     const tasksList = props.tasks.length
-        ? <List>{props.tasks.map(getTasksListItem)}</List>
+        ? <List style={{color: 'black'}}>{props.tasks.map(getTasksListItem)}</List>
         : <span>Your tasksList is empty :(</span>
 
     const addTask = (title: string) => {
-        props.addTask(title, props.todoListId)
+        props.addTask(title, props.id)
     }
-    const handlerCreator = (filter: FilterValuesType) => () => props.changeTodoListFilter(filter, props.todoListId)
+    const handlerCreator = (filter: FilterValuesType) => () => props.changeTodoListFilter(filter, props.id)
 
-    const removeTodoList = () => props.removeTodoList(props.todoListId)
+    const removeTodoList = () => props.removeTodoList(props.id)
 
     const changeTodoListTitle = (title: string) => {
-        props.changeTodoListTitle(title, props.todoListId)
+        props.changeTodoListTitle(title, props.id)
     }
 
     return (
